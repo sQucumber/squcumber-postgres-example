@@ -24,7 +24,3 @@ Feature: Our Business KPIs
       | reference_date | visitor_count | unique_visitor_count |
       | 2016-09-27     | 2             | 1                    |
       | 2016-09-28     | 1             | 1                    |
-    And the result exactly matches the sales attributed correctly:
-      | reference_date | sales_count |
-      | 2016-09-27     | 0           |
-      | 2016-09-28     | 1           |
