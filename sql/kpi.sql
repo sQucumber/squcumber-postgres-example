@@ -3,7 +3,7 @@ create temporary table _visits as
   select
       request_timestamp::date    as reference_date
     , count(*)                   as visitor_count
-    , count(distinct request_id) as unique_visitor_count
+    , count(distinct user_id) as unique_visitor_count
   from
       dwh.tracking
   group by
