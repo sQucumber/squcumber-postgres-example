@@ -1,0 +1,25 @@
+version: '2'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:9.6
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: dwh
+  squcumber:
+    container_name: squcumber
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PORT: 5432
+      DB_PASSWORD: secret
+      DB_NAME: dwh
+      PGPASSWORD: secret
